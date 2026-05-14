@@ -542,3 +542,66 @@ body.menu-open .hamburger .line-middle {
 body.menu-open .hamburger .line-bottom {
   transform: translateY(-6px) rotate(-45deg);
 }
+
+/* Friction List */
+.friction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.friction-list li {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.friction-list .icon-x {
+  color: #e63946;
+  font-weight: 800;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Placeholders */
+.placeholder-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: rgba(14, 133, 133, 0.05);
+  border: 1px dashed rgba(14, 133, 133, 0.3);
+  border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-img::after {
+  content: 'Image Placeholder';
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.3;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .grid-2.reverse-mobile div:nth-child(1) {
+    order: 2;
+  }
+  .grid-2.reverse-mobile div:nth-child(2) {
+    order: 1;
+  }
+}
