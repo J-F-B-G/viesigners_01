@@ -161,6 +161,15 @@ header.main-header {
   .menu-text {
     display: none;
   }
+
+  .menu-text-container {
+    display: none;
+  }
+
+  .menu-btn {
+    gap: 0;
+    padding: 0;
+  }
 }
 
 .main-header nav {
