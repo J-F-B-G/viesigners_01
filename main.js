@@ -96,4 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(statsSection);
   }
+
+  // --- Testimonials Read More Logic ---
+  const readMoreButtons = document.querySelectorAll('.read-more-btn');
+  readMoreButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.testimonial-card');
+      card.classList.toggle('is-expanded');
+      
+      const isExpanded = card.classList.contains('is-expanded');
+      btn.setAttribute('data-i18n', isExpanded ? 'testimonials.less' : 'testimonials.more');
+      
+      // Immediately re-apply translation to this button
+      if (translations[currentLang] && translations[currentLang][btn.getAttribute('data-i18n')]) {
+        btn.innerHTML = translations[currentLang][btn.getAttribute('data-i18n')];
+      }
+    });
+  });
 });
