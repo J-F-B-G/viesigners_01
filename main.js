@@ -51,4 +51,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // --- Stats Counter Logic ---
+  const statsSection = document.getElementById('performance');
+  const statNumbers = document.querySelectorAll('.stat-number');
+  let animated = false;
+
+  const animateCounters = () => {
+    statNumbers.forEach(num => {
+      const target = parseInt(num.getAttribute('data-target'));
+      const suffix = num.getAttribute('data-target') === '5' ? 'x' : '+';
+      const duration = 2000;
+      let startTime = null;
+
+      // Ease out function: starts fast, slows down
+      const easeOutQuart = (t) => 1 - (--t) * t * t * t;
+
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        const currentCount = Math.floor(easedProgress * target);
+
+        num.textContent = currentCount + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          num.textContent = target + suffix;
+        }
+      };
+
+      requestAnimationFrame(step);
+    });
+  };
+
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !animated) {
+        animateCounters();
+        animated = true;
+      }
+    }, { threshold: 0.3 });
+
+    observer.observe(statsSection);
+  }
 });
