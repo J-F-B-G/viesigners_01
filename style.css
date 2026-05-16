@@ -1394,6 +1394,79 @@ body.menu-open .hamburger .line-bottom {
   line-height: 1.6;
 }
 
+/* Forms */
+.contact-form {
+  background: rgba(251, 245, 227, 0.03);
+  border: 1px solid rgba(251, 245, 227, 0.1);
+  padding: 3rem;
+  border-radius: var(--radius-card);
+}
+.section-light .contact-form {
+  background: #ffffff;
+  border: 1px solid rgba(62, 73, 89, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background: transparent;
+  border: 1px solid rgba(62, 73, 89, 0.2);
+  border-radius: 8px;
+  color: var(--text-dark);
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+}
+
+.form-control::placeholder {
+  color: rgba(62, 73, 89, 0.4);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.contact-info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.contact-info-icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--accent-color);
+}
+
 /* =============================================
    BOOTSTRAP OVERRIDES — Ne pas supprimer
    Ces règles protègent le design custom contre
@@ -1535,4 +1608,57 @@ a.btn.btn-primary[style*="#e63946"],
 .section-light .card {
   background: #ffffff !important;
   border: 1px solid rgba(62, 73, 89, 0.1) !important;
+}
+
+/* Contact Page Specific Styles (Matching Reference) */
+.custom-contact-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.custom-contact-form .form-control {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(62, 73, 89, 0.2);
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-contact-form .form-control:focus {
+  outline: none;
+  border-color: var(--text-dark);
+  box-shadow: 0 0 0 3px rgba(62, 73, 89, 0.1);
+}
+
+.custom-contact-form .form-control::placeholder {
+  color: rgba(62, 73, 89, 0.4);
+}
+
+.btn-submit-custom {
+  background-color: var(--bg-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 1rem 2.5rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  border: none !important;
+}
+
+.btn-submit-custom:hover {
+  background-color: #2c3440 !important;
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+  .grid-2-form {
+    grid-template-columns: 1fr !important;
+  }
 }
