@@ -55,7 +55,22 @@ export const translations = {
     "footer.terms": "Conditions générales",
     "cta.title": "Il est temps d'appuyer sur le bouton.",
     "cta.subtitle": "Arrêtez de laisser de l'argent sur la table. Maximisez votre rentabilité avec un appel 100% gratuit.",
-    "cta.button": "C'est parti"
+    "cta.button": "C'est parti",
+    "faq.title": "Foire aux questions.",
+    "faq.subtitle": "Des doutes? Voici ce qu'on nous demande le plus souvent.",
+    "faq.tag": "Vos questions",
+    "faq.q1": "Qu'est-ce qu'une agence web et quels services offre-t-elle?",
+    "faq.a1": "Une agence numérique tisse des liens invisibles entre les marques et les esprits. Elle code des émotions. Elle conçoit des histoires qui intéressent, expliquent et motivent l'action.<br><br>Du moins, c'est ce que nous nous efforçons de faire tous les jours : construire des écosystèmes digitaux performants — sites, applications, campagnes et contenus qui propulsent les marques vers plus de visibilité, d’engagement et de croissance mesurable.",
+    "faq.q2": "Quel est le budget moyen pour un site web professionnel réalisé par une agence?",
+    "faq.a2": "Au Canada, le budget varie généralement entre 2 000 $ et 200 000 $ CAD selon vos objectifs d'affaires et le retour sur investissement (ROI) visé.<br><br>Notre philosophie est simple : on ne prend pas un avion pour aller au dépanneur. Le budget doit être le carburant de vos ambitions. Le prix final dépendra du \"véhicule\" nécessaire pour atteindre vos cibles, influencé par ces 4 piliers :<br><br><strong>Stratégie & Contenu :</strong> Maturité de votre branding, clarté de l'offre et prise en charge du SEO.<br><strong>Design & Expérience :</strong> Niveau de sur-mesure (UX/UI), animations et volume de pages.<br><strong>Complexité technique :</strong> Fonctionnalités e-commerce et intégrations externes (ERP/CRM).<br><strong>Évolution :</strong> Votre autonomie à l'interne et le volume de maintenance prévue.<br><br>Pour savoir quel véhicule correspond à vos objectifs, <a href=\"#contact\">contactez-nous</a>.",
+    "faq.q3": "Que dois-je préparer avant de demander un devis pour la création ou la refonte d'un site internet?",
+    "faq.a3": "Pour obtenir un devis précis pour la refonte de votre site internet, l'idéal est de nous partager votre vision d'affaires plutôt qu'une simple liste de pages. Voici les 3 éléments clés à préparer avant de nous contacter :<br><br><strong>Vos objectifs d'affaires :</strong> Qu'est-ce qui motive cette refonte ? Que se passera-t-il pour votre entreprise si le projet est un immense succès ? (Et à l'inverse, que se passera-t-il si vous ne changez rien à votre site actuel ?)<br><br><strong>Votre environnement concurrentiel :</strong> Identifiez vos 3 à 5 concurrents principaux, ainsi que 3 à 5 sites web qui vous inspirent (et ce que vous aimez de chacun).<br><br><strong>Vos ressources internes (pour les grandes organisations) :</strong> Qui sera responsable du projet de votre côté, quelle sera sa disponibilité hebdomadaire, et avez-vous besoin que nous fournissions un gestionnaire de projet dédié ?<br><br>Rassurez-vous, vous n'avez pas besoin de connaître vos statistiques actuelles par cœur (comme votre taux de conversion exact). Nous creuserons ces données analytiques ensemble lors de notre première rencontre !<br><br>Prêt à discuter de votre projet ? <a href=\"#contact\">Demandez votre évaluation</a>",
+    "faq.q4": "Quels sont les avantages d'une micro-agence comme la vôtre?",
+    "faq.a4": "D'abord, nous ne connaissons aucune agence web qui, comme nous, se fait un code d'honneur d'offrir des <strong>services digne du top 3% mondial</strong>, sans vous faire prendre en charge par un employé sans expérience ni avoir l'impression d'être un numéro, comme on le voit dans de plus grandes agences.<br><br>Nous croyons que c'est la raison pour laquelle un nombre grandissant de nos clients nous réserve des budgets préalablement prévus pour d'autres experts : <strong>nous livrons nos promesses</strong> et focalisons la totalité de nos actions sur votre ROI.",
+    "faq.q5": "Comment m'assurer d'en avoir pour mon argent?",
+    "faq.a5": "Chaque service que nous offrons vient avec <strong>une garantie</strong> que les autres agences n'osent pas offrir. <a href=\"#contact\">Contactez-nous</a> pour en connaître les détails.",
+    "faq.q6": "Travaillez-vous avec des grandes ou des petites entreprises?",
+    "faq.a6": "Nous offrons des services pour les entreprises en démarrage et les PME, comme pour les grandes corporations. Le principal critère est que vous devez avoir le désir de croître.<br><br>Si vous sentez qu'un service pourrait vous aider, <a href=\"#contact\">contactez-nous</a> et nous évaluerons comment vous soutenir au mieux dans vos objectifs, soit à l'interne ou par l'entremise de notre réseau restreint d'experts sélectionnés."
   },
   en: {
     "nav.about": "About Us",
@@ -113,6 +128,21 @@ export const translations = {
     "footer.terms": "Terms & Conditions",
     "cta.title": "It's time to push the button.",
     "cta.subtitle": "Stop leaving money on the table. Maximize your profitability with a 100% free call.",
-    "cta.button": "Let's go"
+    "cta.button": "Let's go",
+    "faq.title": "Frequently Asked Questions.",
+    "faq.subtitle": "Have doubts? Here's what we get asked most often.",
+    "faq.tag": "Your questions",
+    "faq.q1": "What is a web agency and what services does it offer?",
+    "faq.a1": "A digital agency weaves invisible threads between brands and minds. It codes emotions. It designs stories that interest, explain, and motivate action.<br><br>At least, that's what we strive to do every day: build high-performance digital ecosystems — sites, applications, campaigns, and content that propel brands toward more visibility, engagement, and measurable growth.",
+    "faq.q2": "What is the average budget for a professional website created by an agency?",
+    "faq.a2": "In Canada, the budget generally varies between $2,000 and $200,000 CAD depending on your business goals and the targeted return on investment (ROI).<br><br>Our philosophy is simple: you don't take a plane to the convenience store. The budget should be the fuel for your ambitions. The final price will depend on the \"vehicle\" needed to reach your targets, influenced by these 4 pillars:<br><br><strong>Strategy & Content:</strong> Maturity of your branding, clarity of the offer, and SEO management.<br><strong>Design & Experience:</strong> Level of customization (UX/UI), animations, and page volume.<br><strong>Technical Complexity:</strong> E-commerce features and external integrations (ERP/CRM).<br><strong>Evolution:</strong> Your internal autonomy and the planned volume of maintenance.<br><br>To find out which vehicle matches your goals, <a href=\"#contact\">contact us</a>.",
+    "faq.q3": "What should I prepare before asking for a quote for the creation or redesign of a website?",
+    "faq.a3": "To get an accurate quote for your website redesign, the ideal approach is to share your business vision with us rather than just a simple list of pages. Here are the 3 key elements to prepare before contacting us:<br><br><strong>Your business goals:</strong> What is motivating this redesign? What will happen for your company if the project is a huge success? (And conversely, what will happen if you don't change anything about your current site?)<br><br><strong>Your competitive environment:</strong> Identify your 3 to 5 main competitors, as well as 3 to 5 websites that inspire you (and what you like about each).<br><br><strong>Your internal resources (for large organizations):</strong> Who will be responsible for the project on your end, what will be their weekly availability, and do you need us to provide a dedicated project manager?<br><br>Rest assured, you don't need to know your current statistics by heart (like your exact conversion rate). We will dig into this analytical data together during our first meeting!<br><br>Ready to discuss your project? <a href=\"#contact\">Request your evaluation</a>",
+    "faq.q4": "What are the advantages of a micro-agency like yours?",
+    "faq.a4": "First, we know of no other web agency that, like us, makes it a point of honor to offer <strong>services worthy of the world's top 3%</strong>, without having you handled by an inexperienced employee or feeling like a number, as seen in larger agencies.<br><br>We believe this is why a growing number of our clients reserve budgets for us that were previously set aside for other experts: <strong>we deliver on our promises</strong> and focus all our actions on your ROI.",
+    "faq.q5": "How can I be sure to get my money's worth?",
+    "faq.a5": "Every service we offer comes with <strong>a guarantee</strong> that other agencies don't dare to offer. <a href=\"#contact\">Contact us</a> to find out the details.",
+    "faq.q6": "Do you work with large or small companies?",
+    "faq.a6": "We offer services for startups and SMEs, as well as for large corporations. The main criterion is that you must have the desire to grow.<br><br>If you feel that a service could help you, <a href=\"#contact\">contact us</a> and we will evaluate how best to support you in your goals, either internally or through our restricted network of selected experts."
   }
 };

@@ -113,4 +113,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- FAQ Accordion Logic ---
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentElement;
+      const isOpen = item.classList.contains('is-open');
+      
+      // Close all other items
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        otherItem.classList.remove('is-open');
+      });
+      
+      // Toggle current item
+      if (!isOpen) {
+        item.classList.add('is-open');
+      }
+    });
+  });
 });
