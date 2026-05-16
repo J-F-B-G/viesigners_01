@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Médias Sociaux | Viesigners</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  
-    <div id="header-wrapper" class="header-wrapper">
+import os
+import re
+
+header_replacement = """  <div id="header-wrapper" class="header-wrapper">
     <div class="container">
     <header class="main-header">
       <div class="header-contact" style="position: relative; z-index: 1000;">
@@ -57,53 +50,30 @@
       </nav>
       </div>
   </div>
-  </div>
+  </div>"""
 
-  <main>
-    <section class="hero" style="padding-bottom: 5rem;">
-      <div class="container">
-        <span class="section-tag">Service</span>
-        <h1 style="font-size: clamp(2.5rem, 5vw, 4.5rem);">Médias Sociaux & Publicité</h1>
-        <p>Générez un trafic chaud pour votre marque avec des stratégies ciblées et engageantes.</p>
-      </div>
-    </section>
+files = [
+    "seo-geo.html",
+    "coaching.html",
+    "medias-sociaux.html",
+    "ux-ui.html",
+    "email-marketing.html",
+    "landing-page.html",
+    "site-web.html"
+]
 
-    <section style="padding-top: 2rem;">
-      <div class="container grid-2" style="align-items: flex-start;">
-        <div>
-          <h2>Créez l'attention.</h2>
-          <p style="font-size: 1.2rem; opacity: 0.8; margin-top: 1.5rem;">Capter l'attention coûte cher, et la perdre coûte encore plus cher. Nous créons des campagnes qui font passer vos utilisateurs de curieux à acheteurs grâce à du contenu percutant.</p>
-          <a href="./contact.html" class="btn btn-primary" style="margin-top: 2rem;">Déployer une campagne</a>
-        </div>
-        <div style="background-color: var(--text-color); color: var(--bg-color); padding: 3rem; border-radius: var(--radius-card);">
-          <h3>Diffusion optimale :</h3>
-          <ul style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; list-style: none; padding: 0;">
-            <li style="border-bottom: 1px solid rgba(251,245,227,0.1); padding-bottom: 1rem;">
-              <strong>Publicités (Paid Ads) :</strong> Meta, LinkedIn, TikTok pour de l'acquisition ciblée.
-            </li>
-            <li style="border-bottom: 1px solid rgba(251,245,227,0.1); padding-bottom: 1rem;">
-              <strong>Création de contenu :</strong> visuels, vidéos courtes pour générer l'engagement organique.
-            </li>
-            <li>
-              <strong>Ciblage de l'audience :</strong> parce que montrer la bonne offre à la mauvaise personne est inutile.
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+for f in files:
+    with open(f, 'r') as file:
+        content = file.read()
+    
+    # Replace header
+    content = re.sub(r'<div class="container">\s*<header class="main-header">.*?</nav>\s*</div>\s*</div>', header_replacement, content, flags=re.DOTALL)
+    
+    # Add main.js script before </body> if missing
+    if '<script type="module" src="/main.js"></script>' not in content:
+        content = content.replace('</body>', '  <script type="module" src="/main.js"></script>\n</body>')
+        
+    with open(f, 'w') as file:
+        file.write(content)
 
-  </main>
-
-  <footer>
-    <div class="container">
-      <a href="/" class="logo" style="display: block; margin-bottom: 2rem; color: var(--bg-color);">VIESIGNERS.</a>
-      <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">L'agence canadienne de performance numérique no 1.</p>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Viesigners. Tous droits réservés.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script type="module" src="/main.js"></script>
-</body>
-</html>
+print("Done")
