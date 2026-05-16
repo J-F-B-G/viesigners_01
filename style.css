@@ -104,6 +104,20 @@ h3 {
   padding: 0 4vw;
 }
 
+/* Sections */
+.section-light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  padding: 8rem 0;
+}
+
+.section-dark {
+  background-color: #001226;
+  color: white;
+  padding: 8rem 0;
+  text-align: center;
+}
+
 /* Header */
 header.main-header {
   padding: 2.5rem 0;
@@ -1096,4 +1110,151 @@ body.menu-open .hamburger .line-bottom {
   opacity: 0.6;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+  background-color: #001226; /* Dark navy from screenshot */
+  padding: 6rem 0 4rem;
+  color: white;
+}
+
+.site-footer .container {
+  max-width: 1200px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 6rem;
+  text-align: left;
+}
+
+.footer-brand .logo {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: white;
+  text-decoration: none;
+}
+
+.footer-tagline {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+  max-width: 350px;
+}
+
+.footer-info p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  color: white;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.social-icon:hover {
+  opacity: 1;
+}
+
+.footer-nav h4, 
+.footer-contact h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-nav li {
+  margin-bottom: 1.2rem;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: white;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  font-size: 1.05rem;
+}
+
+.footer-nav a:hover {
+  opacity: 1;
+}
+
+.footer-cta {
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+  font-size: 1.05rem;
+  transition: opacity 0.3s ease;
+}
+
+.footer-cta:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  padding-top: 3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.footer-legal a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Responsive Footer */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .footer-brand {
+    grid-column: span 2;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-brand {
+    grid-column: span 1;
+  }
+  .footer-legal {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }

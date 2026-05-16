@@ -538,33 +538,58 @@
     </section>
 
     <!-- FINAL CTA SECTION -->
-    <section id="contact" style="text-align: center; padding: 8rem 0;">
+    <section id="contact" class="section-dark">
       <div class="container">
-        <h2 style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1.5rem;">Il est temps d'appuyer<br>sur le bouton.
-        </h2>
-        <p style="font-size: 1.4rem; opacity: 0.8; max-width: 600px; margin: 0 auto 3rem;">Arrêtez de laisser de
-          l'argent sur la table. Maximisez votre rentabilité avec un appel 100% gratuit.</p>
-        <a href="#contact" class="btn btn-primary"
-          style="background-color: var(--bg-light); color: var(--text-dark); padding: 1.5rem 4rem; font-size: 1.3rem;">Commencer
-          le projet</a>
+        <h2 style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1.5rem;" data-i18n="cta.title">Il est temps d'appuyer<br>sur le bouton.</h2>
+        <p style="font-size: 1.4rem; opacity: 0.8; max-width: 600px; margin: 0 auto 3rem;" data-i18n="cta.subtitle">Arrêtez de laisser de l'argent sur la table. Maximisez votre rentabilité avec un appel 100% gratuit.</p>
+        <a href="#contact" class="btn btn-primary" style="background-color: var(--bg-light); color: var(--text-dark); padding: 1.5rem 4rem; font-size: 1.3rem;" data-i18n="cta.button">C'est parti</a>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <div class="container">
-      <a href="/" class="logo" style="display: block; margin-bottom: 2rem;">VIESIGNERS.</a>
-      <ul class="nav-links" style="justify-content: center; margin-bottom: 2rem;">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">À Propos</a></li>
-        <li><a href="#portfolio">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <p style="opacity: 0.8; max-width: 600px; margin: 0 auto;">L'agence canadienne de performance numérique no 1.
-        Stratégies web adaptées à votre niveau de croissance pour augmenter votre ROI.</p>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo">Viesigners</a>
+          <p class="footer-tagline" data-i18n="footer.tagline">La pédale d'accélérateur des entreprises en croissance.</p>
+          <div class="footer-info">
+            <p data-i18n="footer.location.quebec">Québec, Canada</p>
+            <p data-i18n="footer.location.vancouver">Vancouver, Canada</p>
+            <p><span data-i18n="footer.phone">Téléphone : +1 581-502-1115</span> <a href="tel:+15815021115" style="color: inherit; text-decoration: none;">+1 581-502-1115</a></p>
+          </div>
+          <div class="footer-socials">
+            <a href="#" class="social-icon">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-nav">
+          <h4 data-i18n="footer.services">Services</h4>
+          <ul>
+            <li><a href="./site-web.html" data-i18n="footer.services.website">Site web</a></li>
+            <li><a href="./landing-page.html" data-i18n="footer.services.landing">Landing page</a></li>
+            <li><a href="./ux-ui.html" data-i18n="footer.services.uxui">Optimisation UX/UI</a></li>
+            <li><a href="./coaching.html" data-i18n="footer.services.coaching">Coaching d'affaires</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4 data-i18n="footer.contact">Contact</h4>
+          <a href="#contact" class="footer-cta" data-i18n="footer.contact.call">Parlons-nous!</a>
+        </div>
+      </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 Viesigners. Tous droits réservés.</p>
+        <p>Copyright &copy; 2026, Les Viesigners. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+        <div class="footer-legal">
+          <a href="#" data-i18n="footer.privacy">Politique de confidentialité</a>
+          <a href="#" data-i18n="footer.terms">Conditions générales</a>
+        </div>
       </div>
     </div>
   </footer>
