@@ -134,4 +134,32 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // --- Header Scroll Logic ---
+  const headerWrapper = document.getElementById('header-wrapper');
+  if (headerWrapper) {
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      // Toggle blur background
+      if (currentScrollY > 50) {
+        headerWrapper.classList.add('is-scrolled');
+      } else {
+        headerWrapper.classList.remove('is-scrolled');
+      }
+
+      // Hide/show based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        // Scrolling down past 150px
+        headerWrapper.classList.add('is-hidden');
+      } else {
+        // Scrolling up or at the top
+        headerWrapper.classList.remove('is-hidden');
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  }
 });

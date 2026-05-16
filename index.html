@@ -13,7 +13,8 @@
 
 <body>
 
-  <div class="container">
+  <div id="header-wrapper" class="header-wrapper">
+    <div class="container">
     <header class="main-header">
       <div class="header-contact" style="position: relative; z-index: 1000;">
         <a href="tel:+15815021115" class="contact-link">
@@ -29,8 +30,6 @@
       <a href="/" class="logo" style="position: relative; z-index: 1000;">Viesigners</a>
       <div class="header-menu-toggle"
         style="position: relative; z-index: 1000; display: flex; align-items: center; justify-content: flex-end;">
-        <button id="langToggle" class="lang-btn"
-          style="background:none; border:1px solid var(--text-color); color:var(--text-color); padding:0.2rem 0.6rem; border-radius:4px; cursor:pointer; margin-right:1rem; font-weight:bold; font-size:0.8rem; transition:opacity 0.3s;">EN</button>
         <button class="menu-btn" id="menuToggleBtn">
           <div class="menu-text-container">
             <span class="menu-text menu-text-open" data-i18n="header.menu">Menu</span>
@@ -56,9 +55,13 @@
           <li><a href="/ux-ui.html" data-i18n="nav.uxui">Optimisation UX/UI</a></li>
           <li><a href="/coaching.html" data-i18n="nav.coaching">Coaching d'affaires</a></li>
           <li><a href="/#contact" data-i18n="nav.contact">Contact</a></li>
+          <li style="margin-top: 3rem;">
+            <button id="langToggle" class="lang-btn" style="background:none; border:none; color:var(--text-color); padding:0; cursor:pointer; font-weight:500; font-size:clamp(1.5rem, 3vw, 2rem); font-family:var(--font-heading); text-transform:uppercase; transition:opacity 0.3s; opacity: 0.7;">EN</button>
+          </li>
         </ul>
       </nav>
-    </div>
+      </div>
+  </div>
   </div>
 
   <main>
