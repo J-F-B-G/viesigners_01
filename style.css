@@ -279,6 +279,12 @@ section {
   align-items: center;
 }
 
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
 .masonry-grid {
   display: flex;
   gap: 2rem;
@@ -652,6 +658,43 @@ body.menu-open .hamburger .line-bottom {
   }
 }
 /* Red Tagline */
+/* Qualification Lists */
+.qualification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.qualification-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.qualification-list li::before {
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.qualification-list--yes li::before {
+  content: '✓';
+  color: #1a8c4e;
+}
+
+.qualification-list--no li::before {
+  content: '✕';
+  color: #e63946;
+}
+
+
 .section-tag-red {
   color: #e63946;
   font-weight: 700;
@@ -748,6 +791,7 @@ body.menu-open .hamburger .line-bottom {
 @media (max-width: 768px) {
   .grid-3 {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .expertise-card {
@@ -1317,4 +1361,143 @@ body.menu-open .hamburger .line-bottom {
   opacity: 0.8;
   margin: 0;
   line-height: 1.6;
+}
+
+/* =============================================
+   BOOTSTRAP OVERRIDES — Ne pas supprimer
+   Ces règles protègent le design custom contre
+   le CSS Reboot de Bootstrap.
+   ============================================= */
+
+/* Base */
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-body) !important;
+  line-height: 1.6 !important;
+}
+
+/* Typographie */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading) !important;
+  font-weight: 500 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  margin-top: 0 !important;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 5.5rem) !important; }
+h2 { font-size: clamp(2rem, 5vw, 4rem) !important; }
+h3 { font-size: clamp(1.8rem, 3vw, 2.5rem) !important; }
+
+/* Container */
+.container {
+  max-width: 1400px !important;
+  padding-left: 4vw !important;
+  padding-right: 4vw !important;
+}
+
+/* Boutons Dashed */
+.btn-dashed {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.5rem 3rem !important;
+  border: 2px dashed #e63946 !important;
+  color: #e63946 !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: var(--radius-pill) !important;
+  background: rgba(230, 57, 70, 0.05) !important;
+  gap: 1rem !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-dashed:hover {
+  background: rgba(230, 57, 70, 0.1) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 20px rgba(230, 57, 70, 0.1) !important;
+}
+
+.btn-dashed-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* Boutons — neutraliser le style Bootstrap */
+.btn-primary {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-dark) !important;
+  border-radius: var(--radius-pill) !important;
+  padding: 1.2rem 3rem !important;
+  font-size: 1.1rem !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+.btn-primary:hover {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  opacity: 0.85 !important;
+  transform: translateY(-3px) !important;
+}
+.btn-primary:focus, .btn-primary:active {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  box-shadow: none !important;
+}
+
+/* Liens */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover { color: inherit; }
+
+/* Sections light */
+.section-light {
+  background-color: var(--bg-light) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Sections dark */
+.section-dark,
+section.section-dark,
+#contact {
+  background-color: #001226 !important;
+  color: white !important;
+  padding: 8rem 0 !important;
+}
+
+/* Spacing — neutraliser les marges Bootstrap entre sections */
+section {
+  padding: 8rem 0 !important;
+  margin: 0 !important;
+}
+
+/* Bouton rouge spécifique au portfolio CTA */
+a.btn.btn-primary[style*="#e63946"],
+.portfolio-cta {
+  background-color: #e63946 !important;
+  border-color: #e63946 !important;
+  color: white !important;
+  border-radius: var(--radius-pill) !important;
+  display: inline-flex !important;
+}
+
+/* Cards */
+.card {
+  background: rgba(251, 245, 227, 0.03) !important;
+  border: 1px solid rgba(251, 245, 227, 0.1) !important;
+  border-radius: var(--radius-card) !important;
+  color: inherit !important;
+}
+.section-light .card {
+  background: #ffffff !important;
+  border: 1px solid rgba(62, 73, 89, 0.1) !important;
 }
