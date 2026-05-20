@@ -15,7 +15,7 @@ header_replacement = """  <div id="header-wrapper" class="header-wrapper">
           <span class="phone-number">+1 581-502-1115</span>
         </a>
       </div>
-      <a href="/" class="logo" style="position: relative; z-index: 1000;">Viesigners</a>
+      <a href="./index.html" class="logo" style="position: relative; z-index: 1000;">Viesigners</a>
       <div class="header-menu-toggle"
         style="position: relative; z-index: 1000; display: flex; align-items: center; justify-content: flex-end;">
         <button class="menu-btn" id="menuToggleBtn">
@@ -37,11 +37,11 @@ header_replacement = """  <div id="header-wrapper" class="header-wrapper">
     <div class="fullscreen-menu" id="fullscreenMenu">
       <nav class="fullscreen-nav">
         <ul>
-          <li><a href="/#about" data-i18n="nav.about">À propos</a></li>
-          <li><a href="/site-web.html" data-i18n="nav.website">Site web</a></li>
-          <li><a href="/landing-page.html" data-i18n="nav.landing">Landing page</a></li>
-          <li><a href="/ux-ui.html" data-i18n="nav.uxui">Optimisation UX/UI</a></li>
-          <li><a href="/coaching.html" data-i18n="nav.coaching">Coaching d'affaires</a></li>
+          <li><a href="./index.html#about" data-i18n="nav.about">À propos</a></li>
+          <li><a href="./site-web.html" data-i18n="nav.website">Site web</a></li>
+          <li><a href="./landing-page.html" data-i18n="nav.landing">Landing page</a></li>
+          <li><a href="./ux-ui.html" data-i18n="nav.uxui">Optimisation UX/UI</a></li>
+          <li><a href="./coaching.html" data-i18n="nav.coaching">Coaching d'affaires</a></li>
           <li><a href="./contact.html" data-i18n="nav.contact">Contact</a></li>
           <li style="margin-top: 3rem;">
             <button id="langToggle" class="lang-btn" style="background:none; border:none; color:var(--text-color); padding:0; cursor:pointer; font-weight:500; font-size:clamp(1.5rem, 3vw, 2rem); font-family:var(--font-heading); text-transform:uppercase; transition:opacity 0.3s; opacity: 0.7;">EN</button>
@@ -70,8 +70,8 @@ for f in files:
     content = re.sub(r'<div class="container">\s*<header class="main-header">.*?</nav>\s*</div>\s*</div>', header_replacement, content, flags=re.DOTALL)
     
     # Add main.js script before </body> if missing
-    if '<script type="module" src="/main.js"></script>' not in content:
-        content = content.replace('</body>', '  <script type="module" src="/main.js"></script>\n</body>')
+    if '<script type="module" src="./main.js"></script>' not in content:
+        content = content.replace('</body>', '  <script type="module" src="./main.js"></script>\n</body>')
         
     with open(f, 'w') as file:
         file.write(content)
