@@ -7,7 +7,7 @@
   --bg-card: #1e293b; /* Arrière-plan de carte sombre */
   --bg-card-hover: #1e293b;
   --text-color: #ffffff;
-  --text-muted: #64748b; /* Gris ardoise muté */
+  --text-muted: #9f9fa9; /* Gris ardoise muté */
   --text-dark: #0f172a; /* Texte foncé pour sections claires */
   --bg-light: #f8fafc; /* Gris clair pour sections alternatives claires */
   --accent-color: #00C9A7; /* Teal cyan dynamique */
@@ -55,6 +55,10 @@ h6 {
 
 h1 {
   font-size: clamp(2.5rem, 6vw, 5.5rem);
+}
+
+p {
+  color: rgb(159, 159, 169);
 }
 
 h2 {
@@ -119,6 +123,10 @@ h3 {
   background-color: var(--bg-light);
   color: var(--text-dark);
   padding: 8rem 0;
+}
+
+.section-light p {
+  color: var(--text-dark);
 }
 
 .section-dark {
@@ -280,6 +288,24 @@ section {
   color: var(--text-dark);
 }
 
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-light h5,
+.section-light h6 {
+  color: rgb(4, 20, 29) !important;
+}
+
+.section-light h1 span,
+.section-light h2 span,
+.section-light h3 span,
+.section-light h4 span,
+.section-light h5 span,
+.section-light h6 span {
+  color: rgba(119, 119, 119, 0.54) !important;
+}
+
 .section-light .btn-secondary {
   color: var(--text-dark);
   border-color: var(--text-dark);
@@ -318,7 +344,7 @@ section {
   max-width: 700px;
   margin: 0 0 3rem 0;
   opacity: 0.8;
-  color: #ffffff;
+  color: rgb(159, 159, 169);
 }
 
 /* Layout Util */
@@ -428,6 +454,85 @@ section {
   align-items: center;
   gap: 0.5rem;
   text-transform: uppercase;
+}
+
+/* Minimal Card Styles */
+.services-grid {
+  gap: 0;
+}
+
+.card-minimal {
+  background: transparent !important;
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: none !important;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-light .card-minimal {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.card-minimal:hover {
+  transform: none !important;
+  background: var(--bg-card) !important;
+}
+
+.section-light .card-minimal:hover {
+  background: var(--bg-card) !important;
+}
+
+.section-light .card-minimal:hover h3 {
+  color: var(--text-color) !important;
+}
+
+.section-light .card-minimal:hover p {
+  color: rgb(159, 159, 169) !important;
+}
+
+.card-minimal::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-minimal:hover::before {
+  opacity: 1;
+}
+
+.card-minimal .card-arrow {
+  margin-top: auto; 
+  align-self: flex-end;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.section-light .card-minimal .card-arrow {
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.card-minimal:hover .card-arrow,
+.section-light .card-minimal:hover .card-arrow {
+  color: var(--accent-color);
+  border-color: rgba(0, 201, 167, 0.3);
 }
 
 /* Footer */
