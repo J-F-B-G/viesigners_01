@@ -1,0 +1,217 @@
+---
+// src/layouts/Layout.astro
+// Props: lang (string), title (string), description (string)
+const { lang = 'fr', title, description } = Astro.props;
+
+const altLang = lang === 'fr' ? 'en' : 'fr';
+const altLabel = lang === 'fr' ? 'EN' : 'FR';
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  {description && <meta name="description" content={description} />}
+
+  <!-- hreflang SEO tags -->
+  <link rel="alternate" hreflang="fr" href={`/fr/`} />
+  <link rel="alternate" hreflang="en" href={`/en/`} />
+  <link rel="canonical" href={`/${lang}/`} />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div id="header-wrapper" class="header-wrapper">
+    <div class="container">
+      <header class="main-header">
+        <div class="header-contact" style="position: relative; z-index: 1000;">
+          <a href="tel:+15815021115" class="contact-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+            <span class="phone-number">+1 581-502-1115</span>
+          </a>
+        </div>
+        <a href={`/${lang}/`} class="logo" style="position: relative; z-index: 1000;">V2R Consulting</a>
+        <div class="header-menu-toggle" style="position: relative; z-index: 1000; display: flex; align-items: center; justify-content: flex-end;">
+          <button class="menu-btn" id="menuToggleBtn">
+            <div class="menu-text-container">
+              <span class="menu-text menu-text-open">Menu</span>
+              <span class="menu-text menu-text-close">Fermer</span>
+            </div>
+            <svg class="hamburger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line class="line line-top" x1="3" y1="6" x2="21" y2="6"></line>
+              <line class="line line-middle" x1="3" y1="12" x2="21" y2="12"></line>
+              <line class="line line-bottom" x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Fullscreen Menu -->
+      <div class="fullscreen-menu" id="fullscreenMenu">
+        <nav class="fullscreen-nav">
+          <ul>
+            <li><a href={`/${lang}/#about`}>{lang === 'fr' ? 'À propos' : 'About'}</a></li>
+            <li><a href={`/${lang}/site-web/`}>{lang === 'fr' ? 'Site web' : 'Website'}</a></li>
+            <li><a href={`/${lang}/landing-page/`}>{lang === 'fr' ? 'Landing page' : 'Landing page'}</a></li>
+            <li><a href={`/${lang}/ux-ui/`}>{lang === 'fr' ? 'Optimisation UX/UI' : 'UX/UI Optimization'}</a></li>
+            <li><a href={`/${lang}/coaching/`}>{lang === 'fr' ? "Coaching d'affaires" : 'Business Coaching'}</a></li>
+            <li><a href={`/${lang}/contact/`}>{lang === 'fr' ? 'Contact' : 'Contact'}</a></li>
+            <li style="margin-top: 3rem;">
+              <a href={`/${altLang}/`} class="lang-btn" style="background:none; border:none; color:var(--text-color); padding:0; cursor:pointer; font-weight:500; font-size:clamp(1.5rem, 3vw, 2rem); font-family:var(--font-heading); text-transform:uppercase; transition:opacity 0.3s; opacity: 0.7; text-decoration: none;">{altLabel}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <slot />
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href={`/${lang}/`} class="logo">V2R Consulting</a>
+          <p class="footer-tagline">{lang === 'fr' ? "La pédale d'accélérateur des entreprises en croissance." : "The accelerator pedal for growing businesses."}</p>
+          <div class="footer-info">
+            <p>Québec, Canada</p>
+            <p>Vancouver, Canada</p>
+            <p><span>{lang === 'fr' ? 'Téléphone : ' : 'Phone: '}</span><a href="tel:+15815021115" style="color: inherit; text-decoration: none;">+1 581-502-1115</a></p>
+          </div>
+          <div class="footer-socials">
+            <a href="#" class="social-icon">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+            </a>
+            <a href="#" class="social-icon">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>{lang === 'fr' ? 'Services' : 'Services'}</h4>
+          <ul>
+            <li><a href={`/${lang}/site-web/`}>{lang === 'fr' ? 'Site web' : 'Website'}</a></li>
+            <li><a href={`/${lang}/landing-page/`}>{lang === 'fr' ? 'Landing page' : 'Landing page'}</a></li>
+            <li><a href={`/${lang}/ux-ui/`}>{lang === 'fr' ? 'Optimisation UX/UI' : 'UX/UI Optimization'}</a></li>
+            <li><a href={`/${lang}/coaching/`}>{lang === 'fr' ? "Coaching d'affaires" : 'Business Coaching'}</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <a href={`/${lang}/contact/`} class="footer-cta">{lang === 'fr' ? 'Parlons-nous!' : "Let's talk!"}</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2026, Les V2R Consulting. <span>{lang === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}</span></p>
+        <div class="footer-legal">
+          <a href="#">{lang === 'fr' ? 'Politique de confidentialité' : 'Privacy Policy'}</a>
+          <a href="#">{lang === 'fr' ? 'Conditions générales' : 'Terms & Conditions'}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmxc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Interactive JS (menu, stats, FAQ, testimonials) – no translation dependency -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // --- Menu Logic ---
+      const menuToggleBtn = document.getElementById('menuToggleBtn');
+      const fullscreenMenu = document.getElementById('fullscreenMenu');
+
+      if (menuToggleBtn) {
+        menuToggleBtn.addEventListener('click', () => {
+          document.body.classList.toggle('menu-open');
+        });
+      }
+
+      if (fullscreenMenu) {
+        fullscreenMenu.addEventListener('scroll', () => {
+          fullscreenMenu.classList.toggle('is-scrolled', fullscreenMenu.scrollTop > 20);
+        });
+      }
+
+      // --- Stats Counter ---
+      const statsSection = document.getElementById('performance');
+      const statNumbers = document.querySelectorAll('.stat-number');
+      let animated = false;
+
+      const easeOutQuart = (t) => 1 - (--t) * t * t * t;
+
+      const animateCounters = () => {
+        statNumbers.forEach(num => {
+          const target = parseInt(num.getAttribute('data-target'));
+          const suffix = num.getAttribute('data-target') === '5' ? 'x' : '+';
+          const duration = 2000;
+          let startTime = null;
+          const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            num.textContent = Math.floor(easeOutQuart(progress) * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+            else num.textContent = target + suffix;
+          };
+          requestAnimationFrame(step);
+        });
+      };
+
+      if (statsSection) {
+        new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !animated) { animateCounters(); animated = true; }
+        }, { threshold: 0.3 }).observe(statsSection);
+      }
+
+      // --- Testimonials Read More ---
+      document.querySelectorAll('.read-more-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.testimonial-card');
+          card.classList.toggle('is-expanded');
+          btn.textContent = card.classList.contains('is-expanded') ? btn.dataset.less : btn.dataset.more;
+        });
+      });
+
+      // --- FAQ Accordion ---
+      document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+          const item = question.parentElement;
+          const isOpen = item.classList.contains('is-open');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+          if (!isOpen) item.classList.add('is-open');
+        });
+      });
+
+      // --- Logo Ticker ---
+      const ticker = document.getElementById('logoTicker');
+      if (ticker) {
+        const original = ticker.innerHTML;
+        for (let i = 0; i < 5; i++) ticker.innerHTML += original;
+      }
+
+      // --- Header Scroll ---
+      const headerWrapper = document.getElementById('header-wrapper');
+      if (headerWrapper) {
+        let lastScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+          const currentScrollY = window.scrollY;
+          headerWrapper.classList.toggle('is-scrolled', currentScrollY > 50);
+          headerWrapper.classList.toggle('is-hidden', currentScrollY > lastScrollY && currentScrollY > 150);
+          lastScrollY = currentScrollY;
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+// Footer.astro – simple site footer
+---
+import { useTranslations } from '../i18n/utils.js';
+const { lang } = Astro.props;
+const t = await useTranslations(lang);
+---
+<footer style="padding: 2rem; background: var(--bg-primary); color: var(--text-color); text-align: center;">
+  <p>&copy; 2026 Viesigners. {t['footer.rights'] || 'All rights reserved.'}</p>
+</footer>

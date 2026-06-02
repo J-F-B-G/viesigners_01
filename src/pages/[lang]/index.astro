@@ -1,0 +1,461 @@
+---
+// src/pages/[lang]/index.astro
+import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../i18n/ui.js';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const t = { ...translations['fr'], ...(translations[lang] || {}) };
+
+const title = lang === 'fr'
+  ? 'V2R Consulting | Agence web Québec : sites, tunnels, SaaS & apps'
+  : 'V2R Consulting | Web Agency Quebec: websites, funnels, SaaS & apps';
+
+const description = lang === 'fr'
+  ? "L'agence canadienne de performance numérique no 1. Maximisez votre ROI - Tunnels de vente ✔ Optimisation d'apps ✔ Sites rentables ✔ +1 581-502-1115."
+  : "Canada's #1 digital performance agency. Maximize your ROI - Sales funnels ✔ App optimization ✔ Profitable websites ✔ +1 581-502-1115.";
+
+// Testimonial data so we can loop without repeating HTML
+const testimonials = [
+  { key: 'sabrina', col: 1 },
+  { key: 'tom', col: 1 },
+  { key: 'jorge', col: 1 },
+  { key: 'miguel', col: 2 },
+  { key: 'khrystopher', col: 2 },
+  { key: 'elodie', col: 2 },
+  { key: 'simon', col: 3 },
+  { key: 'maxime', col: 3 },
+  { key: 'marieeve', col: 3 },
+];
+
+// FAQ data
+const faqs = [
+  { q: t['faq.q1'], a: t['faq.a1'] },
+  { q: t['faq.q2'], a: t['faq.a2'] },
+  { q: t['faq.q3'], a: t['faq.a3'] },
+  { q: t['faq.q4'], a: t['faq.a4'] },
+  { q: t['faq.q5'], a: t['faq.a5'] },
+  { q: t['faq.q6'], a: t['faq.a6'] },
+];
+
+const googleSvg = `<svg viewBox="0 0 24 24" class="source-icon">
+  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+</svg>`;
+
+const arrowSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="7" y1="17" x2="17" y2="7"></line>
+  <polyline points="7 7 17 7 17 17"></polyline>
+</svg>`;
+---
+
+<Layout lang={lang} title={title} description={description}>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <span class="section-tag" style="opacity: 0.6; margin-bottom: 2rem;">{t['home.banner.callout']}</span>
+      <h1>{t['home.banner.title,part1']} <span class="font-parklane">{t['home.banner.title,part2']}</span></h1>
+      <p style="font-size: 1.4rem; opacity: 0.8; margin-bottom: 2rem;" set:html={t['home.banner.paragraph']}></p>
+      <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; margin-top: 2rem;">
+        <a href={`/${lang}/contact/`} class="btn btn-primary">{t['home.banner.cta']}</a>
+        <span style="font-size: clamp(14px, 1rem, 16px); opacity: 0.8;">{t['home.banner.cta-incentive']}</span>
+      </div>
+    </div>
+
+    <!-- LOGO TICKER -->
+    <div class="ticker-wrap">
+      <div class="container" style="text-align: left; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; margin-bottom: 2rem; font-weight: 600;">
+        <span set:html={t['home.advised']}></span>
+      </div>
+      <div class="ticker" id="logoTicker">
+        <img src="https://logo.clearbit.com/warnerbros.com" alt="Warner Brothers" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>WARNER BROS</text></svg>'" />
+        <img src="https://logo.clearbit.com/marvel.com" alt="Marvel" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>MARVEL</text></svg>'" />
+        <img src="https://logo.clearbit.com/salesforce.com" alt="Salesforce" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>SALESFORCE</text></svg>'" />
+        <img src="https://logo.clearbit.com/disney.com" alt="Disney" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>DISNEY</text></svg>'" />
+        <img src="https://logo.clearbit.com/hp.com" alt="HP" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'50\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>HP</text></svg>'" />
+        <img src="https://logo.clearbit.com/dell.com" alt="Dell" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>DELL</text></svg>'" />
+        <img src="https://logo.clearbit.com/ubisoft.com" alt="Ubisoft" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'40\'><text x=\'0\' y=\'25\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\' fill=\'white\'>UBISOFT</text></svg>'" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM & FRICTION SECTION -->
+  <section id="problem" class="section-light">
+    <div class="container">
+      <div class="grid-2" style="margin-bottom: 8rem;">
+        <div>
+          <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; line-height: 1.1;">
+            {lang === 'fr' ? <>Vous avez une offre de qualité, mais <span style="color: #0e8585;">vos revenus ne suivent pas?</span></> : <>You have a quality offer, but <span style="color: #0e8585;">your revenue doesn't follow?</span></>}
+          </h2>
+          <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+            {lang === 'fr' ? 'La plupart des entreprises en croissance ont de bonnes idées et un produit ou service de qualité... mais ils se heurtent quand même au plafond de verre :' : 'Most growing businesses have good ideas and quality products... but still hit the glass ceiling:'}
+          </p>
+          <ul class="friction-list">
+            {lang === 'fr' ? (
+              <>
+                <li><span class="icon-x">✕</span><span>Des visiteurs qui atterrissent sur leur site, mais qui repartent sans agir</span></li>
+                <li><span class="icon-x">✕</span><span>Un message qui semble flou ou trop complexe pour un œil extérieur</span></li>
+                <li><span class="icon-x">✕</span><span>Un parcours client qui crée de la friction</span></li>
+                <li><span class="icon-x">✕</span><span>Des clients qui ne rapportent pas assez pour être vraiment profitables</span></li>
+                <li><span class="icon-x">✕</span><span>L'écart frustrant entre la qualité réelle de leur service et la façon dont elle est perçue</span></li>
+              </>
+            ) : (
+              <>
+                <li><span class="icon-x">✕</span><span>Visitors land on their site but leave without taking action</span></li>
+                <li><span class="icon-x">✕</span><span>A message that seems vague or too complex to an outsider</span></li>
+                <li><span class="icon-x">✕</span><span>A customer journey that creates friction</span></li>
+                <li><span class="icon-x">✕</span><span>Clients who don't generate enough revenue to be truly profitable</span></li>
+                <li><span class="icon-x">✕</span><span>The frustrating gap between actual service quality and how it's perceived</span></li>
+              </>
+            )}
+          </ul>
+        </div>
+        <div class="placeholder-img"></div>
+      </div>
+
+      <div class="grid-2 reverse-mobile">
+        <div class="placeholder-img"></div>
+        <div>
+          <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 1.5rem; line-height: 1.2;">
+            {lang === 'fr' ? 'Le problème est la présence de points de friction dans vos parcours clients' : 'The problem is friction points in your customer journeys'}
+          </h2>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; opacity: 0.9; font-size: 1.1rem;">
+            <p>{lang === 'fr' ? "La réalité... C'est que vous n'avez pas besoin de tactiques marketing complexes, de pile technologique automatisée de bout en bout ou de clients plus engagés. Parce qu'ajouter de la complexité sur une fondation déjà irritante ne fait qu'accélérer l'échec." : "The reality... You don't need complex marketing tactics, end-to-end automated tech stacks or more engaged clients. Because adding complexity on an already irritating foundation only accelerates failure."}</p>
+            <p>{lang === 'fr' ? "Le véritable frein, c'est la friction : la difficulté à articuler la valeur de votre offre de manière persuasive et à la traduire en une expérience client qui coule comme une glissade d'eau. Parce que quand le message ne passe pas ou que le chemin est compliqué, l'argent reste dans les poches de vos clients." : "The real obstacle is friction: the difficulty of articulating your offer's value persuasively and translating it into a smooth customer experience. When the message doesn't land or the path is complicated, money stays in your clients' pockets."}</p>
+            <h4 style="font-size: 1.4rem; color: #e63946; margin-top: 1rem; font-style: italic; font-family: var(--font-body); font-weight: 600;">
+              {lang === 'fr' ? 'Et ça vous coûte cher...' : 'And it costs you dearly...'}
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <span class="section-tag-red">{lang === 'fr' ? 'ET SI VOUS LAISSIEZ TOMBER LES ESSAIS-ERREURS?' : 'WHAT IF YOU STOPPED TRIAL AND ERROR?'}</span>
+      <h2 style="font-size: clamp(2rem, 5vw, 3.8rem); margin-bottom: 5rem; max-width: 1100px;">
+        {lang === 'fr' ? 'Découvrez les fondateurs des V2R Consulting : la micro agence web canadienne no 1 pour rentabiliser votre entreprise' : 'Meet the founders of V2R Consulting: Canada\'s #1 micro web agency for maximizing business profitability'}
+      </h2>
+
+      <div class="about-grid">
+        <div class="about-image-column">
+          <div class="placeholder-img"></div>
+          <div class="founder-info">
+            <h4>Charles-Erick &amp; Jean-François BG</h4>
+            <p>{lang === 'fr' ? 'Maîtres en Conception d\'expériences web (2009)' : 'Masters in Web Experience Design (2009)'}</p>
+            <div class="logo-placeholder" style="margin-top: 1.5rem; opacity: 0.6; display: flex; align-items: center; gap: 0.5rem;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 12h3v9h6v-6h4v6h6v-9h3L12 2z" /></svg>
+              UNIVERSITÉ LAVAL
+            </div>
+          </div>
+        </div>
+
+        <div style="padding-top: 1rem;">
+          <h3 style="font-size: 2rem; margin-bottom: 2rem;">{lang === 'fr' ? 'Bonjour! Ici Les Frères BG' : 'Hello! This is Les Frères BG'}</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.8rem; font-size: 1.2rem; opacity: 0.9; line-height: 1.6;">
+            <p>
+              {lang === 'fr'
+                ? <>{`Nous sommes des experts hybrides en `}<strong>expérience utilisateur numérique (UX/UI)</strong>{` et `}<strong>optimisation du taux de conversion et des ventes (CRO)</strong>{` — originaire du Québec, Canada — avec plus de 30 années combinées à aider des entreprises de toutes tailles et de tous secteurs, dans des marchés anglophones comme francophones, à performer en ligne.`}</>
+                : <>{`We are hybrid experts in `}<strong>digital user experience (UX/UI)</strong>{` and `}<strong>conversion rate and sales optimization (CRO)</strong>{` — originally from Quebec, Canada — with over 30 combined years helping businesses of all sizes and sectors, in both English and French markets, to perform online.`}</>
+              }
+            </p>
+          </div>
+          <div class="mini-ticker">
+            <span>{lang === 'fr' ? 'Tel que vu dans' : 'As seen in'}</span>
+            <div class="logo-placeholder">COVEO | Blog</div>
+            <div class="logo-placeholder">O2web | Blog</div>
+            <div class="logo-placeholder">SOCOM</div>
+            <div class="logo-placeholder">SUPERDAD</div>
+            <div class="logo-placeholder">LES 2 GARS D'ADWORDS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="approach-text" style="margin-top: 6rem; margin-bottom: 4rem; max-width: 900px;">
+        <h3 style="margin-bottom: 2.5rem;">
+          {lang === 'fr' ? "Une approche unique, qui rallie expérience client et stratégies d'affaires web" : 'A unique approach that combines customer experience and web business strategies'}
+        </h3>
+        <p style="font-size: 1.2rem; opacity: 0.9; line-height: 1.6;">
+          {lang === 'fr'
+            ? <>{`Entourés d'un réseau d'experts selects du domaine numérique, aussi humains que compétents, nous opérons comme `}<strong>coach d'affaires, consultants stratégiques et partenaires de réalisation</strong>{` en conception d'offres et d'expériences numériques, afin de :`}</>
+            : <>{`Surrounded by a select network of digital experts, as human as they are competent, we operate as `}<strong>business coaches, strategic consultants, and implementation partners</strong>{` in offer design and digital experiences, in order to:`}</>
+          }
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="expertise-card">
+          <h3>{lang === 'fr' ? 'Améliorer les pages de destination et les parcours de vente' : 'Improve landing pages and sales journeys'}</h3>
+          <p>{lang === 'fr' ? 'pour augmenter les demandes, les rendez-vous et les appels' : 'to increase leads, appointments, and calls'}</p>
+        </div>
+        <div class="expertise-card">
+          <h3>{lang === 'fr' ? 'Clarifier et formuler des offres percutantes' : 'Clarify and craft compelling offers'}</h3>
+          <p>{lang === 'fr' ? "pour inciter immédiatement les clients à passer à l'action" : 'to immediately prompt clients to take action'}</p>
+        </div>
+        <div class="expertise-card">
+          <h3>{lang === 'fr' ? "Simplifier l'onboarding et l'expérience des applications et services" : 'Simplify onboarding and app/service experience'}</h3>
+          <p>{lang === 'fr' ? 'pour fidéliser davantage et prolonger la durée de vie client' : 'to increase retention and extend customer lifetime value'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services" class="section-light">
+    <div class="container">
+      <div class="toptal-badge">
+        <span class="badge-label">{lang === 'fr' ? 'Déclaré par Toptal' : 'Declared by Toptal'}</span>
+        <span class="badge-value">Top 3%</span>
+        <span class="badge-sub">{lang === 'fr' ? 'des experts web mondiaux' : 'of global web experts'}</span>
+      </div>
+      <h2 style="margin-bottom: 4rem;">
+        {lang === 'fr' ? "Des stratégies d'affaires web minutieusement adaptées à votre niveau d'évolution" : 'Web business strategies meticulously tailored to your level of evolution'}
+      </h2>
+
+      <div class="grid-2 services-grid">
+        <a href={`/${lang}/site-web/`} class="card card-minimal">
+          <h3>{lang === 'fr' ? 'Création de site web professionnel' : 'Professional website creation'}</h3>
+          <p>{lang === 'fr' ? 'Enracinez votre notoriété et prenez la place qui vous revient dans votre marché' : 'Root your reputation and take your rightful place in your market'}</p>
+          <div class="card-arrow" set:html={arrowSvg}></div>
+        </a>
+        <a href={`/${lang}/landing-page/`} class="card card-minimal">
+          <h3>{lang === 'fr' ? 'Création de landing page et de tunnel de vente' : 'Landing page and sales funnel creation'}</h3>
+          <p>{lang === 'fr' ? 'Doublez ou triplez vos demandes et clients' : 'Double or triple your leads and clients'}</p>
+          <div class="card-arrow" set:html={arrowSvg}></div>
+        </a>
+        <a href={`/${lang}/ux-ui/`} class="card card-minimal">
+          <h3>{lang === 'fr' ? 'Optimisation UX/UI pour SaaS et apps mobiles' : 'UX/UI Optimization for SaaS and mobile apps'}</h3>
+          <p>{lang === 'fr' ? "Bâtissez une expérience d'application de classe mondiale" : 'Build a world-class application experience'}</p>
+          <div class="card-arrow" set:html={arrowSvg}></div>
+        </a>
+        <a href={`/${lang}/coaching/`} class="card card-minimal">
+          <h3>{lang === 'fr' ? "Coaching d'affaires et stratégies performantes" : 'Business coaching and high-performance strategies'}</h3>
+          <p>{lang === 'fr' ? 'Accélérez le lancement de nouveaux services' : 'Accelerate the launch of new services'}</p>
+          <div class="card-arrow" set:html={arrowSvg}></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFORMANCE & STATS SECTION -->
+  <section id="performance" class="performance-section">
+    <div class="performance-bg">
+      <svg class="network-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <circle class="node node-pulse" cx="100" cy="100" r="3" />
+        <circle class="node node-pulse" cx="300" cy="200" r="2" />
+        <circle class="node node-pulse" cx="600" cy="150" r="4" />
+        <circle class="node node-pulse" cx="850" cy="300" r="3" />
+        <circle class="node node-pulse" cx="200" cy="500" r="5" />
+        <circle class="node node-pulse" cx="500" cy="600" r="2" />
+        <circle class="node node-pulse" cx="800" cy="700" r="4" />
+        <circle class="node node-pulse" cx="400" cy="850" r="3" />
+        <circle class="node node-pulse" cx="150" cy="900" r="2" />
+        <line class="link" x1="100" y1="100" x2="300" y2="200" />
+        <line class="link" x1="300" y1="200" x2="600" y2="150" />
+        <line class="link" x1="600" y1="150" x2="850" y2="300" />
+        <line class="link" x1="200" y1="500" x2="100" y2="100" />
+        <line class="link" x1="200" y1="500" x2="500" y2="600" />
+        <line class="link" x1="500" y1="600" x2="800" y2="700" />
+        <line class="link" x1="800" y1="700" x2="850" y2="300" />
+        <line class="link" x1="500" y1="600" x2="400" y2="850" />
+        <line class="link" x1="400" y1="850" x2="150" y2="900" />
+      </svg>
+    </div>
+    <div class="container">
+      <div class="performance-header">
+        <h2>{lang === 'fr' ? "Arrêtez de laisser de l'argent sur la table et maximisez votre rentabilité" : 'Stop leaving money on the table and maximize your profitability'}</h2>
+        <p>{lang === 'fr' ? 'Nous aidons les entreprises à croître plus rapidement en appliquant des systèmes stratégiques validés auprès de grandes marques comme Disney, Marvel, Hasbro et Dell, ainsi qu\'auprès de près de 500 organisations de toute taille, qui ont connu une croissance accélérée.' : 'We help businesses grow faster by applying strategic systems validated with major brands like Disney, Marvel, Hasbro, and Dell, as well as nearly 500 organizations of all sizes that have experienced accelerated growth.'}</p>
+        <h3 style="margin-top: 4rem; color: #e63946; font-size: 2rem;">{lang === 'fr' ? 'Votre entreprise n\'est PAS un cobaye!' : 'Your business is NOT a guinea pig!'}</h3>
+        <p style="font-size: 1.1rem; opacity: 0.9;">{lang === 'fr' ? 'Vous profitez d\'une approche concrète, performante et mesurable qui aligne votre offre, votre positionnement et votre expérience numérique sur vos objectifs d\'affaires.' : 'You benefit from a concrete, high-performing, and measurable approach that aligns your offer, positioning, and digital experience with your business goals.'}</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h4>{lang === 'fr' ? 'Augmentation du taux de conversion' : 'Conversion rate increase'}</h4>
+          <div class="stat-number" data-target="5">0x</div>
+          <p>{lang === 'fr' ? 'Nous laissons les chiffres parler pour nous. Les pages et sites que nous avons créés et optimisés ont obtenu jusqu\'à 5x leur performance initiale.' : 'We let the numbers speak for themselves. Pages and sites we\'ve created and optimized have achieved up to 5x their initial performance.'}</p>
+        </div>
+        <div class="stat-card">
+          <h4>{lang === 'fr' ? 'Entreprises que nous avons aidé à ce jour' : 'Businesses helped to date'}</h4>
+          <div class="stat-number" data-target="500">0+</div>
+          <p>{lang === 'fr' ? 'Nous avons conseillé plus de 500 entreprises, certaines parmi les plus grandes sur la planète terre (et des startups aussi!).' : 'We\'ve advised over 500 businesses, some among the largest on earth (and startups too!).'}</p>
+        </div>
+        <div class="stat-card">
+          <h4>{lang === 'fr' ? 'Marchés que nous avons pénétrés' : 'Markets we\'ve penetrated'}</h4>
+          <div class="stat-number" data-target="30">0+</div>
+          <p>{lang === 'fr' ? 'B2B, B2C, B2B2C, Ecommerce, SaaS, Services locaux ou en ligne, mieux-être, baseball... on a touché à plus de 30 domaines.' : 'B2B, B2C, B2B2C, Ecommerce, SaaS, local or online services, wellness, baseball... we\'ve touched over 30 sectors.'}</p>
+        </div>
+        <div class="stat-card">
+          <h4>{lang === 'fr' ? 'Notre portée internationale' : 'Our international reach'}</h4>
+          <div class="stat-number" data-target="6">0+</div>
+          <p>{lang === 'fr' ? 'Des entrepreneurs et entreprises provenant de plus de 6 pays à travers le monde nous ont fait confiance.' : 'Entrepreneurs and businesses from over 6 countries worldwide have trusted us.'}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION -->
+  <section id="portfolio" class="section-light">
+    <div class="container" style="text-align: center;">
+      <h2 style="margin-bottom: 5rem; font-size: clamp(2rem, 5vw, 3.5rem);">
+        {lang === 'fr' ? 'Quelques réalisations que vous reconnaîtrez peut-être...' : 'Some achievements you might recognize...'}
+      </h2>
+      <div class="grid-2">
+        {[
+          "ASSASSIN'S CREED ODYSSEY", "WARNER BROS. APP", "MARVEL APP",
+          "MUSÉE DE LA CIVILISATION", "CLINICAL TRIAL PHARMY (+48%)",
+          "WIZARDS OF THE COAST", "SPIN MASTER", "TROUVEUNSTAGE.COM"
+        ].map(label => (
+          <div class="portfolio-item">
+            <div class="placeholder-img"><span class="portfolio-label">{label}</span></div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top: 6rem; margin-bottom: 4rem;">
+        <h3 style="font-size: 1.8rem; opacity: 0.9; font-weight: 600;">
+          {lang === 'fr' ? 'Et près de 500 autres entreprises de toutes tailles propulsées sur le web' : 'And nearly 500 other businesses of all sizes launched online'}
+        </h3>
+      </div>
+      <div class="awards-ticker">
+        <span style="opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem;">{lang === 'fr' ? 'Projets reconnus par' : 'Projects recognized by'}</span>
+        <div class="awards-logos">
+          <span>OCTAS</span><span>osentreprendre</span><span>Gartner</span><span>AWWWWARDS</span>
+        </div>
+      </div>
+      <div style="margin-top: 5rem;">
+        <a href={`/${lang}/contact/`} class="btn btn-primary" style="background-color: #e63946; color: white; padding: 1.2rem 4rem;">
+          {lang === 'fr' ? "C'est mon tour" : "It's my turn"}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALIFICATION SECTION -->
+  <section id="qualification" class="section-light">
+    <div class="container">
+      <h2 style="max-width: 900px; margin-bottom: 4rem;">
+        {lang === 'fr' ? <>{`Soyons clairs\u00a0: nous ne travaillons `}<em>PAS</em>{` avec tout le monde`}</> : <>{`Let's be clear: we do `}<em>NOT</em>{` work with everyone`}</>}
+      </h2>
+      <div class="grid-2" style="align-items: flex-start; gap: 5rem; margin-bottom: 3rem;">
+        <div>
+          <h3 style="font-size: 1.6rem; margin-bottom: 2rem; color: var(--text-dark);">
+            {lang === 'fr' ? "C'est pour vous si\u00a0:" : "It's for you if:"}
+          </h3>
+          <ul class="qualification-list qualification-list--yes">
+            {lang === 'fr' ? (
+              <>
+                <li>Vous êtes une entreprise de service — SaaS, applications, services en ligne ou services locaux</li>
+                <li>Vous désirez faire croître votre entreprise</li>
+                <li>Vous êtes sérieux — vous voulez des résultats, pas seulement de belles pages qui flattent votre ego</li>
+              </>
+            ) : (
+              <>
+                <li>You are a service business — SaaS, apps, online or local services</li>
+                <li>You want to grow your business</li>
+                <li>You are serious — you want results, not just pretty pages that flatter your ego</li>
+              </>
+            )}
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size: 1.6rem; margin-bottom: 2rem; color: var(--text-dark);">
+            {lang === 'fr' ? "Ce n'est pas pour vous si…" : "It's not for you if…"}
+          </h3>
+          <ul class="qualification-list qualification-list--no">
+            {lang === 'fr' ? (
+              <>
+                <li>Vous ne visez pas à croître</li>
+                <li>Vous voulez simplement un joli site ou une jolie application</li>
+                <li>Vous n'êtes pas prêts à adopter une approche orientée sur les résultats plutôt que sur le ressenti</li>
+              </>
+            ) : (
+              <>
+                <li>You are not aiming to grow</li>
+                <li>You just want a pretty website or app</li>
+                <li>You're not ready to adopt a results-oriented rather than feeling-based approach</li>
+              </>
+            )}
+          </ul>
+        </div>
+      </div>
+      <p style="font-size: 1.05rem; opacity: 0.85;">
+        {lang === 'fr'
+          ? <>{`Si vous correspondez au profil recherché, `}<strong>{`c'est le temps de `}<a href={`/${lang}/contact/`} style="color: var(--text-dark); text-decoration: underline; font-weight: 700;">se parler&nbsp;!</a></strong></>
+          : <>{`If you match the profile, `}<strong>{`it's time to `}<a href={`/${lang}/contact/`} style="color: var(--text-dark); text-decoration: underline; font-weight: 700;">talk&nbsp;!</a></strong></>
+        }
+      </p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 5rem;">{t['testimonials.title']}</h2>
+      <div class="masonry-grid">
+        {[1, 2, 3].map(col => (
+          <div class="masonry-col">
+            {testimonials.filter(tm => tm.col === col).map(tm => (
+              <div class="card testimonial-card">
+                <div class="testimonial-source" set:html={googleSvg}></div>
+                <p class="testimonial-text">{t[`testimonials.${tm.key}.text`]}</p>
+                <button class="read-more-btn" data-more={t['testimonials.more']} data-less={t['testimonials.less']}>{t['testimonials.more']}</button>
+                <div class="testimonial-footer">
+                  <div class="testimonial-author">{t[`testimonials.${tm.key}.author`]}</div>
+                  <div class="testimonial-role">{t[`testimonials.${tm.key}.role`]}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div style="text-align: center; margin-top: 4rem;">
+        <a href={`/${lang}/contact/`} class="btn btn-dashed">
+          <span class="btn-dashed-icon">+</span> {lang === 'fr' ? 'Insérez votre histoire à succès ici!' : 'Insert your success story here!'}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faq" class="section-light">
+    <div class="container grid-2" style="align-items: flex-start;">
+      <div>
+        <span class="section-tag">{t['faq.tag']}</span>
+        <h2 style="margin-bottom: 2rem;">{t['faq.title']}</h2>
+        <p style="font-size: 1.2rem; opacity: 0.8;">{t['faq.subtitle']}</p>
+      </div>
+      <div class="faq-list">
+        {faqs.map(faq => (
+          <div class="faq-item">
+            <button class="faq-question">
+              <span set:html={faq.q}></span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p set:html={faq.a}></p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA SECTION -->
+  <section id="contact" class="section-dark">
+    <div class="container">
+      <h2 style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 1.5rem;" set:html={t['cta.title']}></h2>
+      <p style="font-size: 1.4rem; opacity: 0.8; max-width: 600px; margin: 0 auto 3rem;">{t['cta.subtitle']}</p>
+      <a href={`/${lang}/contact/`} class="btn btn-primary" style="background-color: var(--bg-light); color: var(--text-dark); padding: 1.5rem 4rem; font-size: 1.3rem;">{t['cta.button']}</a>
+    </div>
+  </section>
+
+</Layout>

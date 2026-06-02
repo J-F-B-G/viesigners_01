@@ -1,0 +1,13 @@
+<!-- src/pages/[lang]/site-web.astro -->
+---
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils.js';
+const { lang } = Astro.params;
+const t = useTranslations(lang);
+---
+<Layout lang={lang}>
+  <section class="service-page">
+    <h1>{t('nav.service1')}</h1>
+    <p>Contenu de la page "Création de site web professionnel". Vous pouvez ajouter ici votre texte et vos images.</p>
+  </section>
+</Layout>
