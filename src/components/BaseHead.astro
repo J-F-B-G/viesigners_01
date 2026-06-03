@@ -1,13 +1,15 @@
 ---
 // Props: { lang: string }
 import { defaultLang, translations } from '../i18n/ui.js';
+import { BASE_PATH } from '../config.js';
+const { lang } = Astro.props;
 const otherLang = lang === 'fr' ? 'en' : 'fr';
 ---
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{translations[lang]["home.banner.title,part1"]}</title>
-  <link rel="alternate" hreflang="fr" href="/fr/" />
-  <link rel="alternate" hreflang="en" href="/en/" />
-  <link rel="canonical" href="/${lang}/" />
+  <title>{translations[lang]["home.banner.title.part1"]}</title>
+  <link rel="alternate" hreflang="fr" href={`${BASE_PATH}/fr/`} />
+  <link rel="alternate" hreflang="en" href={`${BASE_PATH}/en/`} />
+  <link rel="canonical" href={`${BASE_PATH}/${lang}/`} />
 </head>

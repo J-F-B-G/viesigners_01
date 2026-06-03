@@ -1,4 +1,4 @@
-<script>
+---\nimport { BASE_PATH } from '../config.js';\n---\n<script>
   import { useTranslations } from '../i18n/utils.js';
   const { lang } = Astro.props;
   const t = useTranslations(lang);
@@ -6,12 +6,12 @@
 <header class="site-header" style="padding: 1rem; background: var(--bg-primary); color: var(--text-color);">
   <nav>
     <ul style="display: flex; gap: 1rem; list-style: none; margin: 0; padding: 0;">
-      <li><a href={`/${lang}/`} class="nav-link">{t('nav.about')}</a></li>
-      <li><a href={`/${lang}/site-web/`} class="nav-link">{t('nav.service1')}</a></li>
-      <li><a href={`/${lang}/landing-page/`} class="nav-link">{t('nav.service2')}</a></li>
-      <li><a href={`/${lang}/ux-ui/`} class="nav-link">{t('nav.service3')}</a></li>
-      <li><a href={`/${lang}/coaching/`} class="nav-link">{t('nav.service4')}</a></li>
-      <li><a href={`/${lang}/contact/`} class="nav-link">{t('nav.contact')}</a></li>
+      <li><a href={`\${BASE_PATH}/${lang}/`} class="nav-link">{t('nav.about')}</a></li>
+      <li><a href={`\${BASE_PATH}/${lang}/site-web/`} class="nav-link">{t('nav.service1')}</a></li>
+      <li><a href={`\${BASE_PATH}/${lang}/landing-page/`} class="nav-link">{t('nav.service2')}</a></li>
+      <li><a href={`\${BASE_PATH}/${lang}/ux-ui/`} class="nav-link">{t('nav.service3')}</a></li>
+      <li><a href={`\${BASE_PATH}/${lang}/coaching/`} class="nav-link">{t('nav.service4')}</a></li>
+      <li><a href={`\${BASE_PATH}/${lang}/contact/`} class="nav-link">{t('nav.contact')}</a></li>
     </ul>
   </nav>
 </header>
