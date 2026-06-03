@@ -13,8 +13,11 @@ export function getLangFromUrl(pathname) {
  * Simple helper that returns the translation dictionary for the given language.
  * The actual translations are imported from `ui.js` (the former translations.js).
  */
+import { translations } from './ui.js';
+
 export function useTranslations(lang) {
-  // Lazy‑load to keep the bundle small – Astro will replace at build time.
-  const { translations } = await import('./ui.js');
-  return translations[lang] || translations[defaultLang];
+  return function t(key) {
+    const langDict = translations[lang] || translations[defaultLang];
+    return langDict[key] || translations[defaultLang][key] || key;
+  };
 }
