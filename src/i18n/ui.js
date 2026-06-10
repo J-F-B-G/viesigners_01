@@ -147,8 +147,8 @@ export const translations = {
     "faq.a6": "",
 
     "cta.title": "Il est temps d'appuyer sur le bouton",
-    "cta.subtitle": "Arrêtez de laisser de l'argent sur la table. Maximisez votre rentabilité avec un appel 100% gratuit.",
-    "cta.button": "C'est parti",
+    "cta.subtitle": "Arrêtez de laisser de l'argent sur la table. Maximisez votre rentabilité avec votre diagnostic V2R gratuit.",
+    "cta.button": "Réserver mon diagnostic V2R",
 
     "footer.tagline": "La pédale d'accélérateur des entreprises en croissance.",
     "footer.location.quebec": "Québec, Canada",
