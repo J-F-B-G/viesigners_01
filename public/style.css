@@ -1801,7 +1801,7 @@ a.btn.btn-primary[style*="#e63946"],
 .card {
   background: var(--bg-secondary) !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-radius: var(--radius-card) !important;
+  border-radius: 0 !important;
   color: inherit !important;
 }
 
@@ -2162,7 +2162,7 @@ a.btn.btn-primary[style*="#e63946"],
   background-color: #fbf9f4; /* Light warm cream like the image */
   color: var(--text-dark);
   padding: 4rem;
-  border-radius: var(--radius-card); /* Will be sharp because we changed it to 0 */
+  border-radius: 0; /* Changed to 0 for Startify aesthetic */
   box-shadow: var(--shadow-card);
 }
 
