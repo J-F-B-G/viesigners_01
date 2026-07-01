@@ -15,7 +15,7 @@ header_replacement = """  <div id="header-wrapper" class="header-wrapper">
           <span class="phone-number">+1 581-502-1115</span>
         </a>
       </div>
-      <a href="./index.html" class="logo" style="position: relative; z-index: 1000;">Viesigners</a>
+      <a href="./index.html" class="logo" style="position: relative; z-index: 1000;">V2R Consulting</a>
       <div class="header-menu-toggle"
         style="position: relative; z-index: 1000; display: flex; align-items: center; justify-content: flex-end;">
         <button class="menu-btn" id="menuToggleBtn">

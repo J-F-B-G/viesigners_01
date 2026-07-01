@@ -4,14 +4,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/vite",
-    "build": "./node_modules/.bin/vite build"
+    "dev": "./node_modules/.bin/astro dev",
+    "build": "./node_modules/.bin/astro build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "astro": "^6.4.3",
     "vite": "^6.4.2"
   },
   "dependencies": {
